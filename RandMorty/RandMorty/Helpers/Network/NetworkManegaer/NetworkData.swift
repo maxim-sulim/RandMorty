@@ -18,21 +18,20 @@ class NetworkData {
     
     func workDataStartRequest(urlString: String, responce: @escaping(StartRequestModel?, Error?) -> Void) {
         
-        NetworkRequest.shared.request(stringUrl: urlString) { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let resultData = try JSONDecoder().decode(StartRequestModel.self, from: data)
-                    responce(resultData,nil)
-                } catch let jsonError {
-                    print(jsonError.localizedDescription)
+            NetworkRequest.shared.request(stringUrl: urlString) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let resultData = try JSONDecoder().decode(StartRequestModel.self, from: data)
+                        responce(resultData,nil)
+                    } catch let jsonError {
+                        print(jsonError.localizedDescription)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    responce(nil, error)
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
-                responce(nil, error)
             }
-        }
-        
     }
     
     func workDataCharacters(urlString: String, responce: @escaping(CharactersApi?, Error?) -> Void) {

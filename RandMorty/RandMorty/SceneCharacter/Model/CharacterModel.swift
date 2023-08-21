@@ -16,6 +16,7 @@ protocol CharacterModelProtocol {
 struct CharacterModel {
      var title: String
      var image: Data?
+     var imageUrl: String
      var id: Int
 }
 
@@ -23,6 +24,6 @@ extension CharacterModel {
     
    public static func charOpen() -> CharacterModel {
         
-       return CharacterModel(title: "1", id: 0)
+       return CharacterModel(title: "1", imageUrl: "", id: 0)
     }
 }

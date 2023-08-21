@@ -22,7 +22,6 @@ class CharCollectionCell: UICollectionViewCell {
         
     }
     
-    
     func configure(title: String, imageData: Data?) {
         titleChar.text = title
         titleChar.textColor = .white

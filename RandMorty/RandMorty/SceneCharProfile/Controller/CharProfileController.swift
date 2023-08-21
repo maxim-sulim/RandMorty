@@ -220,7 +220,7 @@ extension CharProfileController {
     
     private func loadEpisode() {
         
-        var episode = [EpisodeCharModel]()
+        
         let episodeUrl: [String] = delegate?.episodeUrl ?? []
         
         guard episodeUrl.count != 0 else {
@@ -239,14 +239,10 @@ extension CharProfileController {
                         return
                     }
                     
-                    episode.append(EpisodeCharModel(name: resultData.name,
-                                                    number: resultData.episode,
-                                                    date: resultData.airDate))
+                    self.episodeModel.append(EpisodeCharModel(name: resultData.name, number: resultData.episode, date: resultData.airDate))
                     
-                    if i == episodeUrl.count - 1 {
-                        self.episodeModel = episode
-                        self.charProfileView?.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
-                    }
+                    self.charProfileView?.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+                    
                     
                 } else {
                     print(error!.localizedDescription)

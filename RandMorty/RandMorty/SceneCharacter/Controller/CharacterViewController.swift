@@ -30,7 +30,8 @@ class CharacterViewController: UIViewController, CharProtocol {
     var charProfile: ResultChar?
     var charsApi = [ResultChar]()
     var chars = [CharacterModel]()
-    var charsImage: [Data]?
+    //id char and image
+    var charsImage = [Int:Data]()
     
     private var characterView: CharacterView? {
         
@@ -42,7 +43,7 @@ class CharacterViewController: UIViewController, CharProtocol {
     
     private func configureNavigation() {
         self.navigationItem.title = "Character"
-        
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     private func configure() {
@@ -116,26 +117,28 @@ extension CharacterViewController {
    private func appCharsFromApi(resultsChar: [ResultChar]) {
         
        var charsFromApi = [CharacterModel]()
-       loadImageChar(results: resultsChar)
        
        for i in 0..<resultsChar.count {
            
            let title = resultsChar[i].name
            let id = resultsChar[i].id
-           charsFromApi.append(CharacterModel(title: title, id: id))
+           let urlImage = resultsChar[i].image
+           
+           charsFromApi.append(CharacterModel(title: title, imageUrl: urlImage, id: id))
         }
         
        self.chars = charsFromApi
+       loadImageChar(chars: self.chars)
        self.characterView?.collectionView.reloadData()
     }
     
-    private func loadImageChar(results: [ResultChar]) {
+    private func loadImageChar(chars: [CharacterModel]) {
         
-        var imageArrChars = [Data]()
-        
-        for i in 0..<results.count {
+        for i in 0..<chars.count {
             
-            let urlString = results[i].image
+            let urlString = chars[i].imageUrl
+            
+            let id = chars[i].id
             
             NetworkRequest.shared.request(stringUrl: urlString) { result in
                 
@@ -144,12 +147,9 @@ extension CharacterViewController {
                 case .success(let data):
                     
                     do {
-                        imageArrChars.append(data)
                         
-                        if i == results.count - 1 {
-                            self.charsImage = imageArrChars
-                            self.characterView?.collectionView.reloadData()
-                        }
+                        self.charsImage[id] = data
+                        self.characterView?.collectionView.reloadData()
                     }
                     
                 case .failure(let error):
@@ -178,8 +178,8 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharCollectionCell", for: indexPath) as!
                 CharCollectionCell
         
-        cell.configure(title: chars[indexPath.row].title,
-                       imageData: charsImage?.saveObject(at: indexPath.row))
+        let imageData = charsImage[chars[indexPath.row].id]
+        cell.configure(title: chars[indexPath.row].title, imageData: imageData)
         
         return cell
     }
@@ -187,9 +187,10 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let imageData = charsImage[chars[indexPath.row].id]
         charProfile = charsApi[indexPath.row]
         char = chars[indexPath.row]
-        char?.image = charsImage![indexPath.row]
+        char?.image = imageData
         episodeUrl = charsApi[indexPath.row].episode
     }
     
