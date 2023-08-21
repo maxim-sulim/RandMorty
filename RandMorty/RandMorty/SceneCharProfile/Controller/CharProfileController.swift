@@ -17,22 +17,23 @@ struct EpisodeCharModel {
     var date: String
 }
 
-
-enum TittleCharTable: Int {
-    case profile = 0
-    case info
-    case origin
-    case episodes
-}
-
 class CharProfileController: UIViewController, EpisodeProtocol {
 
+    enum TittleCharTable: Int {
+        case profile = 0
+        case info
+        case origin
+        case episodes
+    }
+    
+    enum ConstrainEpisodeCell: Int {
+        case spaceEpisodeCell = 16
+        case heightEpisodeCell = 85
+    }
     
     weak var delegate: CharProtocol?
     var imageDataOrigin: Data?
     var episodeModel = [EpisodeCharModel]()
-    
-    
     
     private var charProfileView: CharProfileView? {
         
@@ -70,15 +71,16 @@ class CharProfileController: UIViewController, EpisodeProtocol {
     
     private func returnHeightRowEpisode() -> CGFloat {
         
-        let countEpisode = episodeModel.count * 24
+        let sumHeigtCell = ConstrainEpisodeCell.spaceEpisodeCell.rawValue *
+                           ConstrainEpisodeCell.heightEpisodeCell.rawValue
         
-        if countEpisode == 0 {
+        let resultHeigtCell = episodeModel.count * sumHeigtCell
+        
+        if resultHeigtCell == 0 {
             return CGFloat(150)
         }
-        return CGFloat(countEpisode)
+        return CGFloat(resultHeigtCell)
     }
-    
-    
     
 }
 
@@ -167,7 +169,7 @@ extension CharProfileController: UITableViewDelegate, UITableViewDataSource {
         } else if TittleCharTable.origin.rawValue == indexPath.section {
             return 95
         } else {
-            return  returnHeightRowEpisode()
+            return returnHeightRowEpisode()
         }
     }
     
@@ -219,7 +221,6 @@ extension CharProfileController {
     }
     
     private func loadEpisode() {
-        
         
         let episodeUrl: [String] = delegate?.episodeUrl ?? []
         
