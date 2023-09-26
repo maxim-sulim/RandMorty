@@ -36,7 +36,7 @@ class CharOriginCell: UITableViewCell {
         backOriginView.layer.cornerRadius = 16
         imagePlanet.layer.cornerRadius = 10
         imagePlanet.backgroundColor = Resources.Color.backOriginGround
-        labelPlanet.text = "Planet"
+        labelPlanet.text = "Planet".localized()
         labelPlanet.textColor = Resources.Color.infoTexlChar
         namePlanet.textColor = Resources.Color.poisonousGreen
         imagePlanet.image = UIImage(named: "Planet")

@@ -101,9 +101,9 @@ extension CharProfileController: UITableViewDelegate, UITableViewDataSource {
         switch section {
             
         case TittleCharTable.profile.rawValue: return nil
-        case TittleCharTable.info.rawValue: return "Info"
-        case TittleCharTable.origin.rawValue: return "Origin"
-        case TittleCharTable.episodes.rawValue: return "Episodes"
+        case TittleCharTable.info.rawValue: return "Info".localized()
+        case TittleCharTable.origin.rawValue: return "Origin".localized()
+        case TittleCharTable.episodes.rawValue: return "Episodes".localized()
             
         default:
             return nil

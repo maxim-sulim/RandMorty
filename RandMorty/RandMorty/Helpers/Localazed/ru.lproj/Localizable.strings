@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  RandMorty
+
+  Created by Максим Сулим on 26.09.2023.
+  
+*/
+
+"Character" = "Персонажи";
+"Info" = "Информация";
+"Origin" = "Происхождение";
+"Episodes" = "Эпизоды";
+"Planet" = "Планета";
+"Species" = "Вид";
+"Type" = "Тип";
+"Gender" = "Пол";

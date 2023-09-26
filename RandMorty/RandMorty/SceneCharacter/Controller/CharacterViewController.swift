@@ -51,7 +51,7 @@ class CharacterViewController: UIViewController, CharProtocol {
     }
     
     private func configureNavigation() {
-        self.navigationItem.title = "Character"
+        self.navigationItem.title = "Character".localized()
         self.navigationController?.navigationBar.tintColor = .white
     }
     
