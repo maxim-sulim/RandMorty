@@ -63,6 +63,9 @@ class CharacterViewController: UIViewController, CharProtocol {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
         if segue.identifier == "ShowCharProfile" {
             
             guard let vc = segue.destination as? CharProfileController else {

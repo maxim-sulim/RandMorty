@@ -198,6 +198,12 @@ extension CharProfileController: UITableViewDelegate, UITableViewDataSource {
 
 extension CharProfileController {
     
+   private func sortedEpisodes(arrEpisode: inout [EpisodeCharModel]) -> [EpisodeCharModel] {
+        
+        return arrEpisode.sorted(by: {$0.number < $1.number})
+        
+    }
+    
     private func loadImageOrigin(results: ResultChar) {
         
         let urlString = results.origin.url
@@ -241,9 +247,8 @@ extension CharProfileController {
                     }
                     
                     self.episodeModel.append(EpisodeCharModel(name: resultData.name, number: resultData.episode, date: resultData.airDate))
-                    
+                    self.episodeModel = self.sortedEpisodes(arrEpisode: &self.episodeModel)
                     self.charProfileView?.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
-                    
                     
                 } else {
                     print(error!.localizedDescription)
