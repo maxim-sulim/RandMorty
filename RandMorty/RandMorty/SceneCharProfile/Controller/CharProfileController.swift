@@ -71,7 +71,7 @@ class CharProfileController: UIViewController, EpisodeProtocol {
     
     private func returnHeightRowEpisode() -> CGFloat {
         
-        let sumHeigtCell = ConstrainEpisodeCell.spaceEpisodeCell.rawValue *
+        let sumHeigtCell = ConstrainEpisodeCell.spaceEpisodeCell.rawValue +
                            ConstrainEpisodeCell.heightEpisodeCell.rawValue
         
         let resultHeigtCell = episodeModel.count * sumHeigtCell

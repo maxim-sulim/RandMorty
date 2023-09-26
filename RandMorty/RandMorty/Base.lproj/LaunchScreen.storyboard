@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,8 +14,30 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Portal" translatesAutoresizingMaskIntoConstraints="NO" id="W59-qN-Irx">
+                                <rect key="frame" x="126.66666666666669" y="343" width="140" height="228"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="Kzv-rp-igO"/>
+                                    <constraint firstAttribute="height" constant="228" id="aHa-yS-uih"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RandM" translatesAutoresizingMaskIntoConstraints="NO" id="GJ0-qK-v8a">
+                                <rect key="frame" x="126.66666666666669" y="267" width="140" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="Vpk-GG-mZ5"/>
+                                    <constraint firstAttribute="height" constant="40" id="oea-1F-V3H"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.049686935885308224" green="0.011977354978635613" blue="0.153411865234375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="W59-qN-Irx" firstAttribute="top" secondItem="GJ0-qK-v8a" secondAttribute="bottom" constant="36" id="Ciw-Ce-Esq"/>
+                            <constraint firstItem="GJ0-qK-v8a" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fZo-Bd-6yH"/>
+                            <constraint firstItem="W59-qN-Irx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="240" id="vi9-0I-xgs"/>
+                            <constraint firstItem="W59-qN-Irx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yHK-ke-itw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tgf-UF-tGy"/>
                 </viewController>
@@ -44,8 +65,7 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Portal" width="140" height="228"/>
+        <image name="RandM" width="140" height="40"/>
     </resources>
 </document>

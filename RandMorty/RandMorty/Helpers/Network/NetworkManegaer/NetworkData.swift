@@ -50,7 +50,6 @@ class NetworkData {
                 responce(nil, error)
             }
         }
-        
     }
     
     func workDataEpisodeChar(urlString: String, responce: @escaping(EpisodesChar?, Error?) -> Void) {
@@ -70,6 +69,5 @@ class NetworkData {
             }
         }
     }
-    
     
 }

@@ -90,7 +90,6 @@ extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
                 
                 if numberSeason.count == 0 && arrStr[i] == "0" {
                     continue
-                    
                 } else {
                     numberSeason += String(arrStr[i])
                 }

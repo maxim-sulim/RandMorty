@@ -25,13 +25,22 @@ class CharacterViewController: UIViewController, CharProtocol {
         configure()
     }
     
+    // property CharProfile
     var episodeUrl: [String]?
     var char: CharacterModel?
     var charProfile: ResultChar?
-    var charsApi = [ResultChar]()
+    
+    var charsFromApi = [ResultChar]()
+    var nextUrlChars: String = "" {
+        didSet {
+            self.isLoadedChars = false
+        }
+    }
     var chars = [CharacterModel]()
     //id char and image
     var charsImage = [Int:Data]()
+    // load characters
+    var isLoadedChars = false
     
     private var characterView: CharacterView? {
         
@@ -53,7 +62,6 @@ class CharacterViewController: UIViewController, CharProtocol {
         characterView?.configure()
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowCharProfile" {
             
@@ -64,7 +72,6 @@ class CharacterViewController: UIViewController, CharProtocol {
             
         }
     }
-        
 }
 
 //MARK: - Work request
@@ -105,7 +112,8 @@ extension CharacterViewController {
                 }
                 
                 self.appCharsFromApi(resultsChar: resultData.results)
-                self.charsApi = resultData.results
+                self.charsFromApi += resultData.results
+                self.nextUrlChars = resultData.info.next
                                 
             } else {
                 print(error!.localizedDescription)
@@ -127,7 +135,7 @@ extension CharacterViewController {
            charsFromApi.append(CharacterModel(title: title, imageUrl: urlImage, id: id))
         }
         
-       self.chars = charsFromApi
+       self.chars += charsFromApi
        loadImageChar(chars: self.chars)
        self.characterView?.collectionView.reloadData()
     }
@@ -188,12 +196,20 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let imageData = charsImage[chars[indexPath.row].id]
-        charProfile = charsApi[indexPath.row]
+        charProfile = charsFromApi[indexPath.row]
         char = chars[indexPath.row]
         char?.image = imageData
-        episodeUrl = charsApi[indexPath.row].episode
+        episodeUrl = charsFromApi[indexPath.row].episode
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == chars.count - 2 && isLoadedChars == false {
+            loadCharacters(urlCharacters: self.nextUrlChars)
+            self.characterView!.collectionView.reloadData()
+            isLoadedChars = true
+        }
+    }
     
 }
 
