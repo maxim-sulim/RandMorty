@@ -7,9 +7,7 @@
 
 import UIKit
 
-
 class EpisodesCell: UITableViewCell {
-
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -26,9 +24,8 @@ class EpisodesCell: UITableViewCell {
         self.contentView.backgroundColor = Resources.Color.blackBackGround
         collectionView.backgroundColor = Resources.Color.blackBackGround
         collectionView.collectionViewLayout = configureCollectionLayout()
-        
     }
-    
+
     private func configureCollectionLayout() -> UICollectionViewCompositionalLayout {
         
         
@@ -65,7 +62,7 @@ extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         let name = delegate?.episodeModel[indexPath.row].name
-        let number = episodeNumber(apiStr: (delegate?.episodeModel[indexPath.row].number)!)
+        let number = transformNumber(apiStr: (delegate?.episodeModel[indexPath.row].number)!)
         let date = delegate?.episodeModel[indexPath.row].date
     
         cell.configure(with: EpisodesCollectionCell.EpisodeViewModel(name: name!, number: number, date: date!))
@@ -73,7 +70,7 @@ extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
-    private func episodeNumber(apiStr: String) -> String {
+    private func transformNumber(apiStr: String) -> String {
         
         var episodeOrSeason = ""
         let arrStr = Array(apiStr)
