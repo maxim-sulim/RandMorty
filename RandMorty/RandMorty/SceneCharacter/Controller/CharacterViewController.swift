@@ -58,6 +58,7 @@ class CharacterViewController: UIViewController, CharProtocol {
     private func configure() {
         characterView?.collectionView.delegate = self
         characterView?.collectionView.dataSource = self
+        characterView?.collectionView.collectionViewLayout = configureCollectionLayout()
         configureNavigation()
         characterView?.configure()
     }
@@ -212,6 +213,27 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
             self.characterView!.collectionView.reloadData()
             isLoadedChars = true
         }
+    }
+    
+    private func configureCollectionLayout() -> UICollectionViewCompositionalLayout {
+        
+        
+        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .absolute(156), heightDimension: .absolute(202))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
+        
+        let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(202))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayoutSize, subitems: [item])
+        group.interItemSpacing = .fixed(25)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.interGroupSpacing = 16
+        section.contentInsets = .init(top: 16, leading: 20, bottom: 16, trailing: 20)
+        
+        
+        return UICollectionViewCompositionalLayout(section: section)
     }
     
 }

@@ -20,8 +20,6 @@ class NetworkRequest {
             return
         }
         
-        DispatchQueue.global().async {
-            
             URLSession.shared.dataTask(with: URLRequest(url: url)) { data, responce, error in
                 DispatchQueue.main.async {
                     if let error = error {
@@ -31,10 +29,13 @@ class NetworkRequest {
                     guard let data = data else {
                         return
                     }
-                    complition(.success(data))
+                    
+                    DispatchQueue.main.async {
+                        complition(.success(data))
+                    }
                 }
             }.resume()
             
-        }
+        
     }
 }
