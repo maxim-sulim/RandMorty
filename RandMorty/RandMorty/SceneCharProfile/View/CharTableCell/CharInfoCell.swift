@@ -43,8 +43,13 @@ class CharInfoCell: UITableViewCell {
         
         self.infoModel = infoModel
         
+        if infoModel.type == "" {
+            typeChar.text = "Base"
+        } else {
+            typeChar.text = infoModel.type
+        }
+        
         speciesChar.text = infoModel.species
-        typeChar.text = infoModel.type
         genderChar.text = infoModel.gender
         
     }

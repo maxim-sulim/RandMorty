@@ -225,12 +225,13 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(202))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayoutSize, subitems: [item])
-        group.interItemSpacing = .fixed(25)
+        group.interItemSpacing = .fixed(35)
         
         let section = NSCollectionLayoutSection(group: group)
         
         section.interGroupSpacing = 16
         section.contentInsets = .init(top: 16, leading: 20, bottom: 16, trailing: 20)
+        section.contentInsetsReference = .automatic
         
         
         return UICollectionViewCompositionalLayout(section: section)
