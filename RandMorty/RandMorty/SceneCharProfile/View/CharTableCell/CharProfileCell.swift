@@ -31,7 +31,7 @@ class CharProfileCell: UITableViewCell {
         self.contentView.backgroundColor = Resources.Color.blackBackGround
         imageCharProfile.layer.cornerRadius = 16
         lifeStatus.textColor = Resources.Color.poisonousGreen
-        nameCharProfile.textColor = Resources.Color.infoTexlChar
+        nameCharProfile.textColor = Resources.Color.infoWhite
         nameCharProfile.text = "Rick sunzhes"
     }
     

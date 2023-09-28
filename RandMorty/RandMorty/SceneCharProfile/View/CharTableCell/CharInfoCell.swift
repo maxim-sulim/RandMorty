@@ -59,15 +59,15 @@ class CharInfoCell: UITableViewCell {
         self.contentView.backgroundColor = Resources.Color.blackBackGround
         backInfoView?.layer.cornerRadius = 16
         backInfoView?.backgroundColor = Resources.Color.blackGrayBackGround
-        lableSpecies.textColor = Resources.Color.infoTextLabel
+        lableSpecies.textColor = Resources.Color.infoLightGray
         lableSpecies.text = TitleLable.speciesLable.rawValue.localized()
-        lableType.textColor = Resources.Color.infoTextLabel
+        lableType.textColor = Resources.Color.infoLightGray
         lableType.text = TitleLable.typeLable.rawValue.localized()
-        lableGender.textColor = Resources.Color.infoTextLabel
+        lableGender.textColor = Resources.Color.infoLightGray
         lableGender.text = TitleLable.genderLabel.rawValue.localized()
-        speciesChar.textColor = Resources.Color.infoTexlChar
-        typeChar.textColor = Resources.Color.infoTexlChar
-        genderChar.textColor = Resources.Color.infoTexlChar
+        speciesChar.textColor = Resources.Color.infoWhite
+        typeChar.textColor = Resources.Color.infoWhite
+        genderChar.textColor = Resources.Color.infoWhite
     }
     
 

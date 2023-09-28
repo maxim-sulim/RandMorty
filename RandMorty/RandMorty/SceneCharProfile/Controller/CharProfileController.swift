@@ -8,7 +8,9 @@
 import UIKit
 
 protocol EpisodeProtocol: AnyObject {
-    var episodeModel: [EpisodeCharModel] { get set }
+    var episodesModel: [EpisodeCharModel] { get set }
+    var episodeModel: EpisodeCharModel { get set }
+    func openEpisodeScene(rowEpisode: Int)
 }
 
 struct EpisodeCharModel {
@@ -33,7 +35,11 @@ class CharProfileController: UIViewController, EpisodeProtocol {
     
     weak var delegate: CharProtocol?
     var imageDataOrigin: Data?
-    var episodeModel = [EpisodeCharModel]()
+    var episodesModel = [EpisodeCharModel]()
+    var episodeModel = EpisodeCharModel(name: "",
+                                        number: "",
+                                        date: "")
+    
     
     private var charProfileView: CharProfileView? {
         
@@ -74,12 +80,23 @@ class CharProfileController: UIViewController, EpisodeProtocol {
         let sumHeigtCell = ConstrainEpisodeCell.spaceEpisodeCell.rawValue +
                            ConstrainEpisodeCell.heightEpisodeCell.rawValue
         
-        let resultHeigtCell = episodeModel.count * sumHeigtCell
+        let resultHeigtCell = episodesModel.count * sumHeigtCell
         
         if resultHeigtCell == 0 {
             return CGFloat(150)
         }
         return CGFloat(resultHeigtCell)
+    }
+    
+    func openEpisodeScene(rowEpisode: Int) {
+        
+        self.episodeModel = episodesModel[rowEpisode]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "EpisodeViewController") as! EpisodeViewController
+        
+        vc.delegateEpisode = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -187,7 +204,7 @@ extension CharProfileController: UITableViewDelegate, UITableViewDataSource {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.contentView.backgroundColor = Resources.Color.blackBackGround
             headerView.backgroundView?.backgroundColor = Resources.Color.blackBackGround
-            headerView.textLabel?.textColor = Resources.Color.infoTexlChar
+            headerView.textLabel?.textColor = Resources.Color.infoWhite
         }
         
     }
@@ -246,8 +263,8 @@ extension CharProfileController {
                         return
                     }
                     
-                    self.episodeModel.append(EpisodeCharModel(name: resultData.name, number: resultData.episode, date: resultData.airDate))
-                    self.episodeModel = self.sortedEpisodes(arrEpisode: &self.episodeModel)
+                    self.episodesModel.append(EpisodeCharModel(name: resultData.name, number: resultData.episode, date: resultData.airDate))
+                    self.episodesModel = self.sortedEpisodes(arrEpisode: &self.episodesModel)
                     self.charProfileView?.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
                     
                 } else {
