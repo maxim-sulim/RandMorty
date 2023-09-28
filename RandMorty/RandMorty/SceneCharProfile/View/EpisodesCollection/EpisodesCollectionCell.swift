@@ -30,9 +30,9 @@ class EpisodesCollectionCell: UICollectionViewCell {
         self.contentView.backgroundColor = Resources.Color.blackBackGround
         backgroundEpisodesView.backgroundColor = Resources.Color.blackGrayBackGround
         backgroundEpisodesView.layer.cornerRadius = 16
-        nameEpisodes.textColor = Resources.Color.infoTexlChar
+        nameEpisodes.textColor = Resources.Color.infoWhite
         numberEpisodes.textColor = Resources.Color.poisonousGreen
-        dateEpisodes.textColor = Resources.Color.infoTextLabel
+        dateEpisodes.textColor = Resources.Color.infoLightGray
     }
     
     func configure(with episodeModel: EpisodeViewModel) {

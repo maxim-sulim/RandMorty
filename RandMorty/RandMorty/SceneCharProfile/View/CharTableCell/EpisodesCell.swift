@@ -53,7 +53,7 @@ class EpisodesCell: UITableViewCell {
 extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        delegate?.episodeModel.count ?? 0
+        delegate?.episodesModel.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,52 +61,17 @@ extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EpisodesCollectionCell", for: indexPath) as! EpisodesCollectionCell
         
         
-        let name = delegate?.episodeModel[indexPath.row].name
-        let number = transformNumber(apiStr: (delegate?.episodeModel[indexPath.row].number)!)
-        let date = delegate?.episodeModel[indexPath.row].date
+        let name = delegate?.episodesModel[indexPath.row].name
+        let number = (delegate?.episodesModel[indexPath.row].number.transformNumberEpisode())!
+        let date = delegate?.episodesModel[indexPath.row].date
     
         cell.configure(with: EpisodesCollectionCell.EpisodeViewModel(name: name!, number: number, date: date!))
         
         return cell
     }
     
-    private func transformNumber(apiStr: String) -> String {
-        
-        var episodeOrSeason = ""
-        let arrStr = Array(apiStr)
-        var numberSeason = ""
-        var numberEpisodes = ""
-        
-        for i in 0..<arrStr.count {
-            
-            if arrStr[i] == "S" {
-                episodeOrSeason = "S"
-            }
-            
-            if episodeOrSeason == "S" && arrStr[i].isNumber {
-                
-                if numberSeason.count == 0 && arrStr[i] == "0" {
-                    continue
-                } else {
-                    numberSeason += String(arrStr[i])
-                }
-            }
-            
-            if arrStr[i] == "E" {
-                episodeOrSeason = "E"
-            }
-            
-            if episodeOrSeason == "E" && arrStr[i].isNumber {
-                
-                if numberEpisodes.count == 0 && arrStr[i] == "0" {
-                    continue
-                } else {
-                    numberEpisodes += String(arrStr[i])
-                }
-            }
-            
-        }
-        
-        return "Episode: \(numberEpisodes), Season \(numberSeason)"
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.openEpisodeScene(rowEpisode: indexPath.row)
     }
+    
 }
