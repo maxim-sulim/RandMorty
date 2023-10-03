@@ -10,7 +10,6 @@ import UIKit
 protocol EpisodeProtocol: AnyObject {
     var episodesModel: [EpisodeCharModel] { get set }
     var episodeModel: EpisodeCharModel { get set }
-    func openEpisodeScene(rowEpisode: Int)
 }
 
 struct EpisodeCharModel {
@@ -21,7 +20,7 @@ struct EpisodeCharModel {
 
 class CharProfileController: UIViewController, EpisodeProtocol {
 
-    enum TittleCharTable: Int {
+    enum TittleCharTable: Int, CaseIterable {
         case profile = 0
         case info
         case origin
@@ -88,17 +87,6 @@ class CharProfileController: UIViewController, EpisodeProtocol {
         return CGFloat(resultHeigtCell)
     }
     
-    func openEpisodeScene(rowEpisode: Int) {
-        
-        self.episodeModel = episodesModel[rowEpisode]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EpisodeViewController") as! EpisodeViewController
-        
-        vc.delegateEpisode = self
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
 }
 
 //MARK: - TableDelegateWork
@@ -106,7 +94,7 @@ class CharProfileController: UIViewController, EpisodeProtocol {
 extension CharProfileController: UITableViewDelegate, UITableViewDataSource {
     
      func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+         return TittleCharTable.allCases.count
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

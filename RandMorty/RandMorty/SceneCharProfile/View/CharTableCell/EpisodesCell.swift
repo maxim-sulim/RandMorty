@@ -71,7 +71,7 @@ extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.openEpisodeScene(rowEpisode: indexPath.row)
+       
     }
     
 }

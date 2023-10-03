@@ -9,7 +9,6 @@ import UIKit
 
 class EpisodeTableCell: UITableViewCell {
 
-    
     @IBOutlet weak var backImageEpisode: UIImageView!
     @IBOutlet weak var nameEpisodeLable: UILabel!
     @IBOutlet weak var numberEpisodeLable: UILabel!
@@ -21,8 +20,6 @@ class EpisodeTableCell: UITableViewCell {
         var date: String = ""
     }
     
-    var model = ModelEpisode()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureDef()
@@ -30,7 +27,6 @@ class EpisodeTableCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     private func configureDef() {
@@ -44,7 +40,7 @@ class EpisodeTableCell: UITableViewCell {
     
     func configureEpisodeCell(model: ModelEpisode) {
          nameEpisodeLable.text = model.name
-         numberEpisodeLable.text = model.number
+         numberEpisodeLable.text = model.number.transformNumberEpisode()
          dateEpisodeLable.text = model.date
     }
 

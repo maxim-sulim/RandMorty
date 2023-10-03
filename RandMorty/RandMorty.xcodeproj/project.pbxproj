@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB51576E2AC98D1E0078FBE2 /* CharsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51576D2AC98D1E0078FBE2 /* CharsTableCell.swift */; };
 		AB5BB8922A8E048E00172F5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BB8912A8E048E00172F5F /* AppDelegate.swift */; };
 		AB5BB8942A8E048E00172F5F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BB8932A8E048E00172F5F /* SceneDelegate.swift */; };
 		AB5BB8962A8E048E00172F5F /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BB8952A8E048E00172F5F /* CharacterViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB51576D2AC98D1E0078FBE2 /* CharsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsTableCell.swift; sourceTree = "<group>"; };
 		AB5BB88E2A8E048E00172F5F /* RandMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5BB8912A8E048E00172F5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5BB8932A8E048E00172F5F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				ABB2F3022AC44147002681B5 /* EpisodeView.swift */,
 				ABB2F3042AC44316002681B5 /* EpisodeTableCell.swift */,
+				AB51576D2AC98D1E0078FBE2 /* CharsTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				AB913D5E2AC3228800DCE6B6 /* String + ext.swift in Sources */,
 				ABB2F3032AC44147002681B5 /* EpisodeView.swift in Sources */,
 				AB5BB8CF2A8F878B00172F5F /* NetworkModel.swift in Sources */,
+				AB51576E2AC98D1E0078FBE2 /* CharsTableCell.swift in Sources */,
 				ABB2F3052AC44316002681B5 /* EpisodeTableCell.swift in Sources */,
 				AB5BB8CA2A8E4C6300172F5F /* EpisodesCell.swift in Sources */,
 				AB5BB8AA2A8E054400172F5F /* Resources.swift in Sources */,
