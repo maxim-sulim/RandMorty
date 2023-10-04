@@ -300,40 +300,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eFZ-fu-pIh" id="b3w-5K-KWn">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="145"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="KOD-3Z-gkz">
-                                                    <rect key="frame" x="16" y="0.0" width="361" height="145"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6lk-Kb-sec">
-                                                        <size key="itemSize" width="345" height="128"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
-                                                    </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EpisodesCollectionCell" id="iLF-gv-Ece" customClass="EpisodesCollectionCell" customModule="RandMorty" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="16" width="345" height="86"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rwB-H9-cwd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="86"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            </collectionViewCellContentView>
-                                                            <size key="customSize" width="345" height="86"/>
-                                                        </collectionViewCell>
-                                                    </cells>
-                                                </collectionView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="KOD-3Z-gkz" secondAttribute="bottom" id="ASl-Bj-Coz"/>
-                                                <constraint firstItem="KOD-3Z-gkz" firstAttribute="leading" secondItem="b3w-5K-KWn" secondAttribute="leading" constant="16" id="evS-46-4g5"/>
-                                                <constraint firstItem="KOD-3Z-gkz" firstAttribute="top" secondItem="b3w-5K-KWn" secondAttribute="top" id="lF7-Cl-Kxx"/>
-                                                <constraint firstAttribute="trailing" secondItem="KOD-3Z-gkz" secondAttribute="trailing" constant="16" id="yvn-MB-H5m"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="collectionView" destination="KOD-3Z-gkz" id="j82-72-KNj"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

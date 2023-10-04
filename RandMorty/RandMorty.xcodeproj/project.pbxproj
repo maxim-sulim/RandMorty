@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB2873282ACD690200F6EE38 /* CharFromEpizodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2873272ACD690200F6EE38 /* CharFromEpizodeCell.swift */; };
 		AB51576E2AC98D1E0078FBE2 /* CharsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB51576D2AC98D1E0078FBE2 /* CharsTableCell.swift */; };
 		AB5BB8922A8E048E00172F5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BB8912A8E048E00172F5F /* AppDelegate.swift */; };
 		AB5BB8942A8E048E00172F5F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BB8932A8E048E00172F5F /* SceneDelegate.swift */; };
@@ -35,9 +36,14 @@
 		ABB2F3012AC43AFA002681B5 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2F3002AC43AFA002681B5 /* EpisodeViewController.swift */; };
 		ABB2F3032AC44147002681B5 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2F3022AC44147002681B5 /* EpisodeView.swift */; };
 		ABB2F3052AC44316002681B5 /* EpisodeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2F3042AC44316002681B5 /* EpisodeTableCell.swift */; };
+		F75BCE489FC4E30ECB776A0E /* Pods_RandMorty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11BEBD36F7DC6B18D5D467 /* Pods_RandMorty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C11BEBD36F7DC6B18D5D467 /* Pods_RandMorty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandMorty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5207B3C66CEB9C1F18C57E53 /* Pods-RandMorty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandMorty.debug.xcconfig"; path = "Target Support Files/Pods-RandMorty/Pods-RandMorty.debug.xcconfig"; sourceTree = "<group>"; };
+		A64FA659999DE0FA14369B05 /* Pods-RandMorty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandMorty.release.xcconfig"; path = "Target Support Files/Pods-RandMorty/Pods-RandMorty.release.xcconfig"; sourceTree = "<group>"; };
+		AB2873272ACD690200F6EE38 /* CharFromEpizodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharFromEpizodeCell.swift; sourceTree = "<group>"; };
 		AB51576D2AC98D1E0078FBE2 /* CharsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharsTableCell.swift; sourceTree = "<group>"; };
 		AB5BB88E2A8E048E00172F5F /* RandMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5BB8912A8E048E00172F5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,17 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F75BCE489FC4E30ECB776A0E /* Pods_RandMorty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55AF047C45996E88A74EA47A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C11BEBD36F7DC6B18D5D467 /* Pods_RandMorty.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB2873262ACD68D800F6EE38 /* CharFromEpizodeCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB2873272ACD690200F6EE38 /* CharFromEpizodeCell.swift */,
+			);
+			path = CharFromEpizodeCell;
+			sourceTree = "<group>";
+		};
 		AB5BB8852A8E048E00172F5F = {
 			isa = PBXGroup;
 			children = (
 				AB5BB8902A8E048E00172F5F /* RandMorty */,
 				AB5BB88F2A8E048E00172F5F /* Products */,
+				FDD44D7F93CD36C189951020 /* Pods */,
+				55AF047C45996E88A74EA47A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +254,7 @@
 		AB5BB8CB2A8E519100172F5F /* EpisodesCollection */ = {
 			isa = PBXGroup;
 			children = (
+				AB2873262ACD68D800F6EE38 /* CharFromEpizodeCell */,
 				AB5BB8CC2A8E51D300172F5F /* EpisodesCollectionCell.swift */,
 			);
 			path = EpisodesCollection;
@@ -286,6 +312,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FDD44D7F93CD36C189951020 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5207B3C66CEB9C1F18C57E53 /* Pods-RandMorty.debug.xcconfig */,
+				A64FA659999DE0FA14369B05 /* Pods-RandMorty.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,9 +328,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB5BB8A22A8E048F00172F5F /* Build configuration list for PBXNativeTarget "RandMorty" */;
 			buildPhases = (
+				49BE8BFAA653B325F2697DDE /* [CP] Check Pods Manifest.lock */,
 				AB5BB88A2A8E048E00172F5F /* Sources */,
 				AB5BB88B2A8E048E00172F5F /* Frameworks */,
 				AB5BB88C2A8E048E00172F5F /* Resources */,
+				9D5C18BDAA87E7E2C74D8307 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -354,6 +391,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		49BE8BFAA653B325F2697DDE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RandMorty-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D5C18BDAA87E7E2C74D8307 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RandMorty/Pods-RandMorty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RandMorty/Pods-RandMorty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RandMorty/Pods-RandMorty-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB5BB88A2A8E048E00172F5F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -374,6 +453,7 @@
 				AB5BB8942A8E048E00172F5F /* SceneDelegate.swift in Sources */,
 				AB913D5E2AC3228800DCE6B6 /* String + ext.swift in Sources */,
 				ABB2F3032AC44147002681B5 /* EpisodeView.swift in Sources */,
+				AB2873282ACD690200F6EE38 /* CharFromEpizodeCell.swift in Sources */,
 				AB5BB8CF2A8F878B00172F5F /* NetworkModel.swift in Sources */,
 				AB51576E2AC98D1E0078FBE2 /* CharsTableCell.swift in Sources */,
 				ABB2F3052AC44316002681B5 /* EpisodeTableCell.swift in Sources */,
@@ -535,6 +615,7 @@
 		};
 		AB5BB8A32A8E048F00172F5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5207B3C66CEB9C1F18C57E53 /* Pods-RandMorty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -563,6 +644,7 @@
 		};
 		AB5BB8A42A8E048F00172F5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A64FA659999DE0FA14369B05 /* Pods-RandMorty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

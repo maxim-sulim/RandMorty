@@ -9,48 +9,44 @@ import UIKit
 
 class EpisodesCell: UITableViewCell {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.backgroundColor = Resources.Color.blackBackGround
+        view.showsVerticalScrollIndicator = false
+        //позволяет выбрать сразу несколько ячеек
+        view.allowsMultipleSelection = true
+        view.alwaysBounceVertical = true
+        view.delegate = self
+        view.dataSource = self
+        return view
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureDef()
+        configureTableCell()
+    }
+    
+    private func configureTableCell() {
+        
+        contentView.backgroundColor = Resources.Color.blackBackGround
+        contentView.addSubview(collectionView)
+        collectionView.register(EpisodesCollectionCell.self,
+                                forCellWithReuseIdentifier: EpisodesCollectionCell.description())
+        
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     weak var delegate: EpisodeProtocol?
     
-    func configureDef() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        self.contentView.backgroundColor = Resources.Color.blackBackGround
-        collectionView.backgroundColor = Resources.Color.blackBackGround
-        collectionView.collectionViewLayout = configureCollectionLayout()
-    }
-
-    private func configureCollectionLayout() -> UICollectionViewCompositionalLayout {
-        
-        
-        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(86))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
-        
-        let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupLayoutSize, subitems: [item])
-        group.interItemSpacing = .fixed(16)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        section.interGroupSpacing = 16
-        section.contentInsets = .init(top: 16, leading: 8, bottom: 16, trailing: 8)
-        
-        
-        return UICollectionViewCompositionalLayout(section: section)
-    }
-    
 }
 
 
-extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension EpisodesCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         delegate?.episodesModel.count ?? 0
@@ -58,20 +54,61 @@ extension EpisodesCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EpisodesCollectionCell", for: indexPath) as! EpisodesCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodesCollectionCell.description(), for: indexPath) as! EpisodesCollectionCell
         
-        
-        let name = delegate?.episodesModel[indexPath.row].name
-        let number = (delegate?.episodesModel[indexPath.row].number.transformNumberEpisode())!
-        let date = delegate?.episodesModel[indexPath.row].date
-    
-        cell.configure(with: EpisodesCollectionCell.EpisodeViewModel(name: name!, number: number, date: date!))
+        let model = EpisodesCollectionCell.EpisodeViewModel(name: (delegate?.episodesModel[indexPath.row].name)!,
+                                                            number: (delegate?.episodesModel[indexPath.row].number)!,
+                                                            date: (delegate?.episodesModel[indexPath.row].date)!)
+        cell.configureCell(model: model)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
+    }
+    
+}
+
+extension EpisodesCell: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
+        
+        let width = collectionView.bounds.width - 40
+        let height: Double = isSelected ? 170 : 70
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        20
+    }
+}
+
+extension EpisodesCell: UICollectionViewDelegate {
+    
+    //переопределение метода для разворачивания ячейки
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        collectionView.selectItem(at: indexPath,
+                                  animated: true,
+                                  scrollPosition: [])
+        collectionView.performBatchUpdates(nil)
+        return true
+    }
+    
+    //переопределение метода для сворачивания
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        collectionView.performBatchUpdates(nil)
+        return true
     }
     
 }
